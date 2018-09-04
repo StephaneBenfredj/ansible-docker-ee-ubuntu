@@ -30,7 +30,7 @@
         name: software-properties-common
         state: present
           
-    - name: adding Docker’s official GPG key using Docker EE repository URL  # have to use --become in ansible-playbook as this command does not seem to support become ??
+    - name: adding Docker official GPG key using Docker EE repository URL  # have to use --become in ansible-playbook as this command does not seem to support become ??
       apt_key:
         url: "{{ DOCKER_EE_URL }}/ubuntu/gpg"
         state: present
@@ -42,5 +42,20 @@
     
     - debug: var=aptkey.stdout_lines
     
+## harded coded result of $(lsb_release -cs) = xenial
+    - name: add stable repository
+      apt_repository: 
+        repo: deb [arch=amd64] {{ DOCKER_EE_URL }}/ubuntu xenial {{ DOCKER_EE_VERSION }}
+        state: present
+         
+    
+    - debug: var=addrepo.stdout_lines
 
+    - name: run apt-get update
+      apt:
+        update_cache: yes
 
+    - name: installing docker-ee
+      apt:
+        name: docker-ee
+        state: present
