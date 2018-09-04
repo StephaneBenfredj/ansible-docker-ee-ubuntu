@@ -1,16 +1,17 @@
-#ansible-docker-ee-ubuntu
+# ansible-docker-ee-ubuntu
 
-##Overview
+## Overview
 ansible playbook to install docker EE on ubuntu 16.04
 
 reference: https://docs.docker.com/install/linux/docker-ee/ubuntu/#install-docker-ee
 
-##Content
+
+## Content
 dockerEE_ubuntu.yml: main playbook 
 dockerEE_creds.yml: contains dockerEE-related variables 
 
 
-##HOWTO
+## HOWTO
 
 step 1: edit /etc/ansible/hosts with list of ubuntu nodes
 step 2: rename dockerEE_creds_sample.yml to dockerEE_creds.yml
