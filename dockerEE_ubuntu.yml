@@ -1,0 +1,46 @@
+---
+- hosts: ubuntuaws2
+  gather_facts: no
+  vars_files:
+    - dockerEE_creds.yml
+
+  tasks:
+    - name: apt-get update
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+        
+    - name: installing package apt-transport-https
+      apt:
+        name: apt-transport-https
+        state: present
+
+    - name: installing package ca-certificates
+      apt:
+        name: ca-certificates
+        state: present
+
+    - name: installing package curl
+      apt:
+        name: curl
+        state: present
+          
+    - name: installing package software-properties-common
+      apt:
+        name: software-properties-common
+        state: present
+          
+    - name: adding Docker’s official GPG key using Docker EE repository URL  # have to use --become in ansible-playbook as this command does not seem to support become ??
+      apt_key:
+        url: "{{ DOCKER_EE_URL }}/ubuntu/gpg"
+        state: present
+
+    - name: checking GPG key
+      command: apt-key fingerprint 6D085F96
+      become: yes
+      register: aptkey 
+    
+    - debug: var=aptkey.stdout_lines
+    
+
+
