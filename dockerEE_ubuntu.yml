@@ -42,7 +42,7 @@
     
     - debug: var=aptkey.stdout_lines
     
-## harded coded result of $(lsb_release -cs) = xenial
+## short term - harded coded result of $(lsb_release -cs) = xenial 
     - name: add stable repository
       apt_repository: 
         repo: deb [arch=amd64] {{ DOCKER_EE_URL }}/ubuntu xenial {{ DOCKER_EE_VERSION }}
