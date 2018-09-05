@@ -13,22 +13,35 @@ dockerEE_creds.yml: contains dockerEE-related variables
 
 ## HOWTO
 
-step 1: edit /etc/ansible/hosts with list of ubuntu nodes
+step 1: edit /etc/ansible/hosts with list of ubuntu nodes and proper python_interpreter variable - sample extract below
+
+```
+[ubuntuaws2]
+10.1.1.10
+10.1.1.11
+10.1.1.12
+
+[ubuntuaws2:vars]
+ansible_python_interpreter=/usr/bin/python3
+```
+
+
+
 
 step 2: rename dockerEE_creds_sample.yml to dockerEE_creds.yml
 
 step 3: update content of dockerEE_creds.yml with appropriate data
 
+step 4: check host reachability / ssh keys 
+
+```
+ansible -m ping ubuntuaws2 --user=ubuntu --private-key=mykey.pem
+```
+
 step 4: run the playbook 
 
 ```
 ansible-playbook dockerEE_ubuntu.yml --user=ubuntu --private-key=mykey.pem --become
-```
-
-
-(optional) check host reachability / ssh keys 
-```
-ansible -m ping ubuntuaws2 --user=ubuntu --private-key=mykey.pem
 ```
 
 
