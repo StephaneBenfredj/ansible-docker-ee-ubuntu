@@ -25,5 +25,12 @@ step 4: run the playbook
 ansible-playbook dockerEE_ubuntu.yml --user=ubuntu --private-key=mykey.pem --become
 ```
 
+
+(optional) check host reachability / ssh keys 
+```
+ansible -m ping ubuntuaws2 --user=ubuntu --private-key=mykey.pem
+```
+
+
 note: "--become" option overlaps with use of task-based become - due to missing become option in apt_key
 
