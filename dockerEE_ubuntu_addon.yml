@@ -1,0 +1,17 @@
+---
+- hosts: ubuntuaws2
+  gather_facts: no
+  vars_files:
+    - dockerEE_creds.yml
+
+  tasks:
+    - name: add user 'ubuntu' to group docker 
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: enable docker service on boot
+      systemd:
+        name: docker
+        enabled: yes
