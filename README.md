@@ -43,12 +43,16 @@ step 4: check host reachability / ssh keys
 ansible -m ping ubuntuaws2 --user=ubuntu --private-key=mykey.pem
 ```
 
-step 4: run the playbook 
+step 4: run the playbooks 
 
 ```
 ansible-playbook dockerEE_ubuntu.yml --user=ubuntu --private-key=mykey.pem --become
+ansible-playbook dockerEE_ubuntu_addon.yml --user=ubuntu --private-key=mykey.pem --become
 ```
 
 
-note: "--become" option overlaps with use of task-based become - due to missing become option in apt_key
+note: in first playbook "--become" option overlaps with use of task-based become - due to missing option in apt_key
 
+
+Then, the next step is to install UCP on master node 
+https://docs.docker.com/ee/end-to-end-install/#step-2-install-universal-control-plane
