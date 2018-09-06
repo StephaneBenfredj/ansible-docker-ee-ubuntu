@@ -54,5 +54,6 @@ ansible-playbook dockerEE_ubuntu_addon.yml --user=ubuntu --private-key=mykey.pem
 note: in first playbook "--become" option overlaps with use of task-based become - due to missing option in apt_key
 
 
-Then, the next step is to install UCP on master node
+Then, the next step is to install UCP on master node:
+
 https://docs.docker.com/ee/end-to-end-install/#step-2-install-universal-control-plane
