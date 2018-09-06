@@ -9,9 +9,11 @@ https://docs.docker.com/install/linux/linux-postinstall/
 
 
 ## Content
-dockerEE_ubuntu.yml: main playbook 
-dockerEE_creds.yml: contains dockerEE-related variables 
-dockerEE_ubuntu_addon.yml: additional tasks for docker group and systemctl setup
+- dockerEE_ubuntu.yml: main playbook
+
+- dockerEE_creds.yml: contains dockerEE-related variables 
+
+- dockerEE_ubuntu_addon.yml: additional tasks for docker group and systemctl setup
 
 
 ## HOWTO
