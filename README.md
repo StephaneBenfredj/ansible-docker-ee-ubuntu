@@ -3,12 +3,15 @@
 ## Overview
 ansible playbook to install docker EE on ubuntu 16.04
 
-reference: https://docs.docker.com/install/linux/docker-ee/ubuntu/#install-docker-ee
+references: 
+https://docs.docker.com/install/linux/docker-ee/ubuntu/#install-docker-ee
+https://docs.docker.com/install/linux/linux-postinstall/
 
 
 ## Content
 dockerEE_ubuntu.yml: main playbook 
 dockerEE_creds.yml: contains dockerEE-related variables 
+dockerEE_ubuntu_addon.yml: additional tasks for docker group and systemctl setup
 
 
 ## HOWTO
