@@ -3,9 +3,9 @@
 ## Overview
 ansible playbook to install docker EE on ubuntu 16.04
 
-references: 
-https://docs.docker.com/install/linux/docker-ee/ubuntu/#install-docker-ee
-https://docs.docker.com/install/linux/linux-postinstall/
+references:
+- https://docs.docker.com/install/linux/docker-ee/ubuntu/#install-docker-ee
+- https://docs.docker.com/install/linux/linux-postinstall/
 
 
 ## Content
