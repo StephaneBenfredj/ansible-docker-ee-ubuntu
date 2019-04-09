@@ -3,7 +3,7 @@
 ## Overview
 ansible playbook to install docker EE on ubuntu 16.04
 
-references:
+References:
 - https://docs.docker.com/install/linux/docker-ee/ubuntu/#install-docker-ee
 - https://docs.docker.com/install/linux/linux-postinstall/
 
@@ -30,6 +30,7 @@ step 1: edit /etc/ansible/hosts with list of ubuntu nodes and proper python_inte
 ansible_python_interpreter=/usr/bin/python3
 ```
 
+Alternatively, create hosts file in local directory and point to it using -i hosts option when using playbooks
 
 
 
@@ -54,6 +55,24 @@ ansible-playbook dockerEE_ubuntu_addon.yml --user=ubuntu --private-key=mykey.pem
 note: in first playbook "--become" option overlaps with use of task-based become - due to missing option in apt_key
 
 
-Then, the next step is to install UCP on master node:
+Then, the next step is to install UCP on master node(s):
 
 https://docs.docker.com/ee/end-to-end-install/#step-2-install-universal-control-plane
+
+
+```
+docker container run --rm -it --name ucp \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  docker/ucp:3.1.5 install \
+  --host-address <node-ip-address> \
+  --interactive
+```
+
+
+To install DTR on UCP nodes
+```
+docker container run -it --rm \
+  docker/dtr:2.6.4 install \
+  --ucp-node <node-hostname> \
+  --ucp-insecure-tls
+```

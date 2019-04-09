@@ -1,3 +1,4 @@
+# updated as per UCP 3.1.5 doc
 ---
 - hosts: ubuntuaws2
   gather_facts: no
@@ -58,3 +59,14 @@
       apt:
         name: docker-ee
         state: present
+
+    - name: install docker-ee-cli # added as per new doc
+      apt:
+        name: docker-ee-cli
+        state: present
+
+    - name: install containerd.io # added as per new doc
+      apt:
+        name: containerd.io
+        state: present
+    
